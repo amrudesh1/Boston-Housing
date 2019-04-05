@@ -13446,7 +13446,18 @@ Model has a coefficient of determination, R^2, of 0.923.
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong>
-Yes because the values of R2 ranges between 0 and 1 the value which was shown as the output is 0.92 so it captured 92% is predictable therefor I conclude that the variation is captured</p>
+Yes because the values of R2 ranges between 0 and 1 the value which was shown as the output is 0.92 so it captured 92% is predictable therefor I conclude that the variation is captured.
+R^2 = 92.3%
+This implies 92.3% of variation is explained by the target variable and it seems to be high.Potential pitfall: We only have five points here, and it may be hard to draw conclusion that is statistically significant.</p>
+<p>A model with an R² of 0 is no better than a model that always predicts the mean of the target variable.
+Whereas a model with an R² of 1 perfectly predicts the target variable.Any value between 0 and 1 indicates what percentage of the target variable, using this model, can be explained by the feature</p>
+<p>R-squared value is the percentage of the response variable variation that is explained by a linear model:
+R-squared = Explained variation / Total variation
+In the target variable, there is some variation contained. The model is trained to learn pattern from the independent variables and try to explain the variation in target variable.
+Total sum of squares (SST)= sum of squares explained by regression model(SSR) + sum of squared errors(SSE)
+1 = (SSR/SST) + (SSE/SST)
+(SSR/SST)=1-(SSE/SST)
+R^2 = (SSR/SST) =1-(SSE/SST)</p>
 
 </div>
 </div>
@@ -13682,6 +13693,9 @@ This is because it is unable to fit the model well and unable to generalize well
 <p><strong>Answer: </strong>
 The maximum depth of 4.
 The training score seems to plateau here, indicating the highest possible score for the model's ability to generalize to unseen data.</p>
+<ol>
+<li>Gap between the training score and testing score does not seem to be substantial too, indicating that the model may not be suffering from a high variance scenario</li>
+</ol>
 
 </div>
 </div>
@@ -13711,7 +13725,15 @@ The training score seems to plateau here, indicating the highest possible score 
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong>
-In essence, the grid search technique allows one to define a grid of parameters that will be searched using K-fold cross-validation.Importantly, the grid search technique exhaustively tries every combination of the provided hyper-parameter values in order to find the best model.</p>
+In essence, the grid search technique allows one to define a grid of parameters that will be searched using K-fold cross-validation.Importantly, the grid search technique exhaustively tries every combination of the provided hyper-parameter values in order to find the best model.There are other techniques that could be used for hyperparameter optimization in order to save time like RandomizedSearchCV, in this case instead of exploring the whole parameter space just a fixed number of parameter settings is sampled from the specified distributions.This proves useful when we need to save time but is not necessary in cases in cases like ours where the data set is relatively small.</p>
+<ol>
+<li><p>The parameters taken in by GridSearch is estimator,param_grid,cv.....and there are more optional parameters that can be passed to the GridSearch.</p>
+</li>
+<li><p>The grid search technique exhaustively generates candidates from a grid of parameter values specified with the param_grid parameter, which is a dictionary with the values of the hyperparameters to evaluate</p>
+</li>
+<li><p>Hyperparameter  ut cannot be learned within the estimator directly. However parameters is more general term when it is combination of hyperparameters alsong with some parameters that are not directly related to your estimator but are required for your model.</p>
+</li>
+</ol>
 
 </div>
 </div>
@@ -13735,7 +13757,16 @@ In essence, the grid search technique allows one to define a grid of parameters 
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p>1.) In K-fold cross validation technique we break our data into K buckets then we train our model K-Times each time using a diffrent bucket as our testing set and the remaining points as out training set.Hence, with the benefits of k-fold cross-validation, we're able to use the average testing accuracy as a benchmark to decide which is the most optimal set of parameters for the learning algorithm.</p>
+<ol>
+<li><p>In K-fold cross validation technique we break our data into K buckets then we train our model K-Times each time using a diffrent bucket as our testing set and the remaining points as out training set.Hence, with the benefits of k-fold cross-validation, we're able to use the average testing accuracy as a benchmark to decide which is the most optimal set of parameters for the learning algorithm.</p>
+</li>
+<li><p>It is commonly used in applied machine learning to compare and select a model for a given predictive modeling problem because it is easy to understand, easy to implement, and results in skill estimates that generally have a lower bias than other methods.Cross-validation is a resampling procedure used to evaluate machine learning models on a limited data sample.</p>
+</li>
+<li><p>The main purspose of this is to get an 'unbiased estimate of model generaliztion on unseen data'.</p>
+</li>
+<li><p>We take one hyperparameter combination from the grid and keep it constant for one round of whole k-fold cross validation process: the whole splitting into kfolds, training and validating on one fold and so on. This helps us in getting an unbiased estimate of model evaluation metric which helps us decide in a more unbiased way, whether the given combination of hyperparameters is best for the particular data set or not. This process is repeated for all combinations of hyperparameters in the grid.</p>
+</li>
+</ol>
 
 </div>
 </div>
@@ -14070,7 +14101,11 @@ Parameter &#39;max_depth&#39; is 4 for the optimal model.
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong> Hint: </strong> The answer comes from the output of the code snipped above.</p>
 <p><strong>Answer: </strong></p>
-<p>The optimal model has a maximum depth of 4</p>
+<ol>
+<li>The optimal model has a maximum depth of 4</li>
+<li>The max depth is the same as my guess in question 6</li>
+<li>In the case of a decision tree regressor, the model has learned what the best questions to ask about the input data are, and can respond with a prediction for the target variable.</li>
+</ol>
 
 </div>
 </div>
@@ -16247,7 +16282,25 @@ Range in prices: $69,044.61
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong></p>
+<p><strong>Answer: </strong>
+From the statistical calculations done at the beginning of the project we found out the following information:</p>
+<p>Minimum price: $105000.0
+Maximum price: $1024800.0
+Mean price: $454342.944
+Median price $438900.0
+Standard deviation of prices: $165340.277
+Given these values, we can conclude:</p>
+<p>Selling price for client 3 is near the million dollars, which is near the maximum of the dataset. This is a reasonable price because of its features (8 rooms, very low poverty level and low student-teacher ratio), the house may be in a wealthy neighborhood.
+Selling price for client 2 is the lowest of the three and given its features is reasonable as it is near the minimum of the dataset.
+For client 1, we can see that its features are intermediate between the latter 2, and therefore, its price is quite near the mean and median.
+And our initial assumptions of the features are confirmed:</p>
+<p>‘RM’, has a directy proportional relationship with the dependent variable ‘Prices’.
+In contrast, ‘LSTAT’ and ‘PTRATIO’ have a inversely proportional relationship with the dependent variable ‘PRICES’.
+Model’s Sensitivity</p>
+<p>An optimal model is not necessarily a robust model. Sometimes, a model is either too complex or too simple to sufficiently generalize to new data.</p>
+<p>Sometimes, a model could use a learning algorithm that is  not appropriate for the structure of the data given.</p>
+<p>Other times, the data itself could be too noisy or contain too few samples to allow a model to adequately capture the target variable — i.e., the model is underfitted.</p>
+<p>The code cell below run the fit_model function ten times with different training and testing sets to see how the prediction for a specific client changes with respect to the data it's trained on.</p>
 <ol>
 <li><p>No one will take the data from 1978 because there is no value for it todays world. The economy has changed so much and inflation has made a great impact on the prices.</p>
 </li>
